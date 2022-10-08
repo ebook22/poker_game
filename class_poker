@@ -13,7 +13,6 @@ class Game:
       self.deck = [x for x in self.fulldeck.keys()]
       shuffle(self.deck)
       self.hands = [[]for _ in range(il_gr)]
-      print (self.hands)
       self.il_gr = il_gr
 
    def deal(self):
