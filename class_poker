@@ -1,0 +1,34 @@
+from random import shuffle
+
+
+class Game:
+
+   def __init__(self, il_gr):
+
+      kolory = ['of hearts', 'of diamonds', 'of clubs', 'of spades']
+      wartosci = [str(x) for x in range(2, 11)]
+      wartosci.extend(['jack', 'queen', 'king', 'ace'])
+      cards = [x + ' ' + y for x in wartosci for y in kolory]
+      self.fulldeck = {x: cards[x] for x in range(52)}
+      self.deck = [x for x in self.fulldeck.keys()]
+      shuffle(self.deck)
+      self.hands = [[]for _ in range(il_gr)]
+      print (self.hands)
+      self.il_gr = il_gr
+
+   def deal(self):
+      for x in range(5):
+         for y in range(self.il_gr):
+            self.hands[y].append(self.deck.pop())
+            self.hands[y].sort()
+      return self.hands
+
+
+new_game = Game(4)
+
+rozdanie = new_game.deal()
+
+for nr, reka in enumerate(rozdanie):
+   print(f'Hand of the player nr {nr+1}:')
+   for x in reka:
+      print(new_game.fulldeck[x])
